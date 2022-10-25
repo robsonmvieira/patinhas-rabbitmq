@@ -1,0 +1,21 @@
+
+version: '3'
+
+services:
+    rabbitmq:
+        container_name: rabbitmq-first
+        networks: 
+            - patinhas-networks
+        image: rabbitmq:3.8-management-alpine
+        hostname: rabbitmq
+        ports:
+            - 15672:15672
+            - 5672:5672
+        environment:
+            - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+            - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+networks:
+ patinhas-networks:
+    name: patinhas-networks
+    driver: bridge
+ 
